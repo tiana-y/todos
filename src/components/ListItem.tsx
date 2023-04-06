@@ -1,14 +1,42 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { ListItem } from "../types";
-import {ListItemWrapper, TextWrapper} from "./ListItem.styled";
+import { ExpandToggle, ListItemWrapper } from "./ListItem.styled";
+import { Checkbox } from "./Checkbox";
+import { ReactComponent as ExpandIcon } from "../icons/expand.svg";
 
 type ListItemComponentProps = {
-    item: ListItem;
+  item: ListItem;
+  indent: number;
 };
-export const ListItemComponent: React.FC<ListItemComponentProps> = ({ item}) => {
-    const [checked, setChecked] = useState(false);
-  return <ListItemWrapper>
-      <input type={'checkbox'} checked={checked} onChange={event => setChecked(event.target.checked)}/>
-      <TextWrapper $done={checked}>{item.text}</TextWrapper>
-  </ListItemWrapper>
+export const ListItemComponent: React.FC<ListItemComponentProps> = ({
+  item,
+  indent,
+}) => {
+  const [checked, setChecked] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
+  return (
+    <>
+      <ListItemWrapper $indent={indent}>
+        <Checkbox
+          checked={checked}
+          onToggle={() => setChecked((prevState) => !prevState)}
+          label={item.text}
+          id={item.id}
+        />
+        {item.children && (
+          <ExpandToggle $expanded={isExpanded} onClick={() => setIsExpanded((prevState) => !prevState)}>
+            <ExpandIcon/>
+          </ExpandToggle>
+        )}
+      </ListItemWrapper>
+      {isExpanded &&
+        item.children?.map((subItem) => (
+          <ListItemComponent
+            key={subItem.id}
+            item={subItem}
+            indent={indent + 1}
+          />
+        ))}
+    </>
+  );
 };

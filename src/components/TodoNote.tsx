@@ -17,7 +17,7 @@ export const TodoNote = (props: { note: TodoList }) => {
       </HeaderContainer>
       <ContentContainer>
         {props.note.items?.map((item) => (
-          <ListItemComponent item={item} key={item.id} />
+          <ListItemComponent item={item} key={item.id} indent={0}/>
         ))}
       </ContentContainer>
     </NoteWrapper>

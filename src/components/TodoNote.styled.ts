@@ -23,18 +23,16 @@ export const HeaderContainer = styled.div`
     flex: auto;
   }
 `;
-export const Pin = styled.div<{ $side: 'left' | 'right' }>`
+export const Pin = styled.div<{ $side: "left" | "right" }>`
   width: 20px;
   height: 20px;
   border-radius: 50px;
   background-color: blue;
   margin: 5px 5px;
-  justify-self: ${props => props.$side === 'left' ? 'flex-start' : 'flex-end' };
-  box-shadow: -4px 5px 4px #B59D23;
-  -webkit-box-shadow: -4px 5px 4px #B59D23;
-  -moz-box-shadow: -4px 5px 4px #B59D23;
+  justify-self: ${(props) =>
+    props.$side === "left" ? "flex-start" : "flex-end"};
+  box-shadow: -4px 5px 4px #b59d23;
+  -webkit-box-shadow: -4px 5px 4px #b59d23;
+  -moz-box-shadow: -4px 5px 4px #b59d23;
 `;
-export const ContentContainer = styled.div`
-
-
-`;
+export const ContentContainer = styled.div``;
