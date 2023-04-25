@@ -3,7 +3,7 @@ import styled from "styled-components/macro";
 export const ListItemWrapper = styled.div<{ $indent: number }>`
   margin-bottom: 10px;
   font-size: 26px;
-  margin-left: ${(props) => `${props.$indent * 40}px`};
+  margin-left: ${(props) => `${props.$indent * 40 + 10}px`};
 `;
 export const ExpandToggle = styled.div<{ $expanded: boolean }>`
   display: inline;

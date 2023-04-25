@@ -3,23 +3,28 @@ import { ListItem } from "../types";
 import { ExpandToggle, ListItemWrapper } from "./ListItem.styled";
 import { Checkbox } from "./Checkbox";
 import { ReactComponent as ExpandIcon } from "../icons/expand.svg";
+import { toggleTodoItem } from "../store/notesStore";
 
 type ListItemComponentProps = {
   item: ListItem;
   indent: number;
+  noteId: string;
 };
 export const ListItemComponent: React.FC<ListItemComponentProps> = ({
   item,
   indent,
+  noteId,
 }) => {
-  const [checked, setChecked] = useState(false);
   const [isExpanded, setIsExpanded] = useState(true);
+  const handleToggle = () => {
+    toggleTodoItem(noteId, item.id);
+  }
   return (
     <>
       <ListItemWrapper $indent={indent}>
         <Checkbox
-          checked={checked}
-          onToggle={() => setChecked((prevState) => !prevState)}
+          checked={item.isDone}
+          onToggle={handleToggle}
           label={item.text}
           id={item.id}
         />
@@ -35,6 +40,7 @@ export const ListItemComponent: React.FC<ListItemComponentProps> = ({
             key={subItem.id}
             item={subItem}
             indent={indent + 1}
+            noteId={noteId}
           />
         ))}
     </>

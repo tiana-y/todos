@@ -1,13 +1,14 @@
 import styled from "styled-components/macro";
-import {useContext} from "react";
-import {TodoListContext} from "../store/TodoListContextProvider";
+import { useStore } from '@nanostores/react';
+import { notes as notesAtom} from '../store/notesStore';
 import {TodoNote} from "./TodoNote";
 
 const NotesWrapper = styled.div`
 `;
+// https://github.com/nanostores/nanostores#readme
 
 export const TodoNotes = () => {
-    const {notes} = useContext(TodoListContext);
+    const notes = useStore(notesAtom);
     return (<NotesWrapper>
             {notes.map(note => (<TodoNote key={note.id} note={note}/>))}
         </NotesWrapper>

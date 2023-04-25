@@ -8,22 +8,26 @@ import {
 import { TodoList } from "../types";
 import { ListItemComponent } from "./ListItem";
 import { ReactComponent as ArrowIcon } from "../icons/arrow.svg";
-import { useState } from "react";
+import React, { useState } from "react";
 
-export const TodoNote = (props: { note: TodoList }) => {
+type TodoNoteComponentProps = {
+  note: TodoList;
+};
+
+export const TodoNote: React.FC<TodoNoteComponentProps> = ({ note}) => {
   const [isExpanded, setIsExpanded] = useState(true);
   return (
     <NoteWrapper $expanded={isExpanded}>
       <HeaderContainer>
         <Pin $side={"left"} />
-        <div className={"title"}>{props.note.title}</div>
+        <div className={"title"}>{note.title}</div>
         <Pin $side={"right"} />
       </HeaderContainer>
       {isExpanded && (
         <>
           <ContentContainer>
-            {props.note.items?.map((item) => (
-              <ListItemComponent item={item} key={item.id} indent={0} />
+            {note.items?.map((item) => (
+              <ListItemComponent item={item} key={item.id} indent={0} noteId={note.id} />
             ))}
           </ContentContainer>
           <ArrowContainer>
