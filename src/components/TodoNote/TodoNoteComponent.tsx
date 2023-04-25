@@ -4,17 +4,17 @@ import {
   Pin,
   ContentContainer,
   ArrowContainer, FoldedNote
-} from "./TodoNote.styled";
-import { TodoList } from "../types";
-import { ListItemComponent } from "./ListItem";
-import { ReactComponent as ArrowIcon } from "../icons/arrow.svg";
+} from "./TodoNoteComponent.styled";
+import { TodoNote } from "../../types";
+import { TodoItemComponent } from "../TodoItem/TodoItemComponent";
+import { ReactComponent as ArrowIcon } from "../../icons/arrow.svg";
 import React, { useState } from "react";
 
 type TodoNoteComponentProps = {
-  note: TodoList;
+  note: TodoNote;
 };
 
-export const TodoNote: React.FC<TodoNoteComponentProps> = ({ note}) => {
+export const TodoNoteComponent: React.FC<TodoNoteComponentProps> = ({ note}) => {
   const [isExpanded, setIsExpanded] = useState(true);
   return (
     <NoteWrapper $expanded={isExpanded}>
@@ -27,7 +27,7 @@ export const TodoNote: React.FC<TodoNoteComponentProps> = ({ note}) => {
         <>
           <ContentContainer>
             {note.items?.map((item) => (
-              <ListItemComponent item={item} key={item.id} indent={0} noteId={note.id} />
+              <TodoItemComponent item={item} key={item.id} indent={0} noteId={note.id} />
             ))}
           </ContentContainer>
           <ArrowContainer>

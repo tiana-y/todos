@@ -1,11 +1,11 @@
 import { action } from 'nanostores';
-import { TodoList } from "../types";
+import { TodoNote } from "../types";
 import { persistentAtom } from '@nanostores/persistent';
 import { dumbTodoNotes } from "../constants/todoListConstant";
 
 // https://github.com/nanostores/persistent
 
-const notes = persistentAtom<TodoList[]>('notes', dumbTodoNotes, {
+const notes = persistentAtom<TodoNote[]>('notes', dumbTodoNotes, {
   encode: JSON.stringify,
   decode: JSON.parse,
 });

@@ -1,40 +1,21 @@
 import React from "react";
-import styled from "styled-components/macro";
+import { useStore } from "@nanostores/react";
 import { ReactComponent as SettingsIcon } from "../icons/settings.svg";
+import { isMenuOpen, toggleMenu } from "../store/settingsStore";
+import { HeaderDecoration, HeaderTitle, SettingsIconWrapper, StyledHeader } from "./Header.styled";
 
-const StyledHeader = styled.header`
-  background-color: #3f4976;
-  color: white;
-  height: 60px;
-  font-family: "Caveat", cursive;
-  font-size: 40px;
-  .title {
-    text-align: center;
-    height: 100%;
-  }
-  .settings-icon {
-    position: absolute;
-    right: 20px;
-    top: 6px;
-    svg {
-      width: 30px;
-      height: 30px;
-      cursor: pointer;
-      opacity: 0.8;
-
-      &:hover {
-        opacity: 1;
-      }
-    }
-  }
-`;
 export const Header = () => {
+  const isOpen = useStore(isMenuOpen);
   return (
     <StyledHeader>
-      <div className={"title"}>Busy Bee</div>
-      <div className={"settings-icon"}>
-        <SettingsIcon />
-      </div>
+      <HeaderDecoration>
+        <div className="line1"></div>
+        <div className="line2"></div>
+      </HeaderDecoration>
+      <HeaderTitle>Busy Bee</HeaderTitle>
+      <SettingsIconWrapper $isOpen={isOpen}>
+        <SettingsIcon onClick={toggleMenu} />
+      </SettingsIconWrapper>
     </StyledHeader>
   );
 };

@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import { ListItem } from "../types";
-import { ExpandToggle, ListItemWrapper } from "./ListItem.styled";
-import { Checkbox } from "./Checkbox";
-import { ReactComponent as ExpandIcon } from "../icons/expand.svg";
-import { toggleTodoItem } from "../store/notesStore";
+import { TodoItem } from "../../types";
+import { ExpandToggle, ListItemWrapper } from "./TodoItemComponent.styled";
+import { Checkbox } from "../Common/Checkbox/Checkbox";
+import { ReactComponent as ExpandIcon } from "../../icons/expand.svg";
+import { toggleTodoItem } from "../../store/notesStore";
 
-type ListItemComponentProps = {
-  item: ListItem;
+type TodoItemComponentProps = {
+  item: TodoItem;
   indent: number;
   noteId: string;
 };
-export const ListItemComponent: React.FC<ListItemComponentProps> = ({
+export const TodoItemComponent: React.FC<TodoItemComponentProps> = ({
   item,
   indent,
   noteId,
@@ -36,7 +36,7 @@ export const ListItemComponent: React.FC<ListItemComponentProps> = ({
       </ListItemWrapper>
       {isExpanded &&
         item.children?.map((subItem) => (
-          <ListItemComponent
+          <TodoItemComponent
             key={subItem.id}
             item={subItem}
             indent={indent + 1}

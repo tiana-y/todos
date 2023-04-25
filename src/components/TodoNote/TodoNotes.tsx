@@ -1,7 +1,7 @@
 import styled from "styled-components/macro";
 import { useStore } from '@nanostores/react';
-import { notes as notesAtom} from '../store/notesStore';
-import {TodoNote} from "./TodoNote";
+import { notes as notesAtom} from '../../store/notesStore';
+import {TodoNoteComponent} from "./TodoNoteComponent";
 
 const NotesWrapper = styled.div`
 `;
@@ -10,7 +10,7 @@ const NotesWrapper = styled.div`
 export const TodoNotes = () => {
     const notes = useStore(notesAtom);
     return (<NotesWrapper>
-            {notes.map(note => (<TodoNote key={note.id} note={note}/>))}
+            {notes.map(note => (<TodoNoteComponent key={note.id} note={note}/>))}
         </NotesWrapper>
     )
 }

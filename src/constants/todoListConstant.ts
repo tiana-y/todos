@@ -1,7 +1,7 @@
-import { TodoList } from "../types";
+import { TodoNote } from "../types";
 import { v4 as uuidv4 } from 'uuid';
 
-export const dumbTodoNotes: TodoList[] = [
+export const dumbTodoNotes: TodoNote[] = [
     {
         id: uuidv4(),
         title: 'Купить',
