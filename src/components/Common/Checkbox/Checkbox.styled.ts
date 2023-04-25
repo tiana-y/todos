@@ -7,19 +7,19 @@ export const CheckboxWrapper = styled.div`
 
     span {
       position: absolute;
-      margin-top: 5px;
+      margin-top: 2px;
     }
   }
   .checkbox {
     position: relative;
     display: inline-block;
     width: 90%;
-    height: 40px;
+    height: 30px;
     overflow: hidden;
   }
   .checkbox-input {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     position: absolute;
     opacity: 0;
   }

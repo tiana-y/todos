@@ -20,12 +20,12 @@ export const Checkbox: React.FC<CheckboxProps> = ({ label, checked, onToggle, id
           onChange={onToggle}
         />
         <label htmlFor={`todo-item=${id}`} className="label">
-          <svg width="50" height="50" viewBox="0 0 100 100">
+          <svg width="40" height="40" viewBox="0 0 100 100">
             <rect
-              x="30"
-              y="20"
-              width="50"
-              height="50"
+              x="35"
+              y="30"
+              width="40"
+              height="40"
               stroke="black"
               fill="none"
             />

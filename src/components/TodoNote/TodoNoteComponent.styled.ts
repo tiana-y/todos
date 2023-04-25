@@ -6,7 +6,7 @@ export const NoteWrapper = styled.div<{ $expanded: boolean; }>`
   color: #000000;
   min-height: 50px;
   max-height: ${props => props.$expanded ? '600px' : '90px' };
-  width: 400px;
+  width: 350px;
   margin: 20px;
   padding: 10px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
@@ -14,7 +14,7 @@ export const NoteWrapper = styled.div<{ $expanded: boolean; }>`
 `;
 export const FoldedNote = styled.div`
   background-color: #DBC968;
-  width: 420px;
+  width: 370px;
   height: 30px;
   position: relative;
   left: -10px;
